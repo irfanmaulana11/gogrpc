@@ -1,0 +1,60 @@
+syntax="proto3";
+
+package model;
+
+option go_package ="./model";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+message UserProfile {
+    string ID = 1;
+    string first_name = 2;
+    string last_name = 3;
+    string email = 4;
+    string password = 5;
+    google.protobuf.Timestamp createdat = 6;
+    google.protobuf.Timestamp updatedat = 7;
+}
+
+message CreateUserProfileRequest {
+    UserProfile user_profile = 1 ;
+}
+
+message GetUserProfileRequest {
+    string id = 1; 
+}
+
+message DeleteUserProfileRequest {
+    string id = 1 ;
+}
+
+message UpdateUserProfileRequest {
+    UserProfile user_profile = 1 ;
+}
+
+
+message ListUsersProfilesRequest{
+    string query =1;
+}
+
+message ListUsersProfilesResponse{
+    repeated UserProfile profiles=1;
+}
+
+service UserProfiles {
+    // CreateProfile creates new user profile.
+    rpc CreateUserProfile (CreateUserProfileRequest) returns (UserProfile){}
+
+    // GetUserProfile returns the user profile by its unique user id.
+     rpc GetUserProfile (GetUserProfileRequest) returns (UserProfile){}
+
+    // DeleteUserProfile will delete the user profile from the system.
+     rpc DeleteUserProfile (DeleteUserProfileRequest) returns (google.protobuf.Empty){}
+
+    // UpdateUserProfile will update the user profile identified by its user id.
+     rpc UpdateUserProfile (UpdateUserProfileRequest) returns (UserProfile){}
+    
+    //get all data 
+     rpc ListUsersProfiles (ListUsersProfilesRequest) returns (ListUsersProfilesResponse){}
+}
