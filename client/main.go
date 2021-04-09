@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 
-	"gogrpc/model"
+	"github.com/gogrpc/model"
 
 	"github.com/gin-gonic/gin"
 	"google.golang.org/grpc"

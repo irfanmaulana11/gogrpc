@@ -4,8 +4,8 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
-	"gogrpc/config"
-	"gogrpc/model"
+	"github.com/gogrpc/config"
+	"github.com/gogrpc/model"
 	"net"
 
 	empty "github.com/golang/protobuf/ptypes/empty"
